@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Todo } from './todo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,6 @@ import { Injectable } from '@angular/core';
 export class TodoService {
 
   constructor() { }
+
+  formData:Todo = new Todo();
 }
