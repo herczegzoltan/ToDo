@@ -1,0 +1,15 @@
+● src
++---● app
+|   +--● todo
+|   |  |--todo.component.ts|.html
+|   |  |
+|   |  +--● todo-form
+|   |     |--todo-form.component.ts|.html
+|   |
+|   +--● shared
+|   |  |--todo.service.ts
+|   |  |--todo.model.ts
+|   |
+|   |--app.module.ts
+|
+|--index.html (cdn path for bootstrap & fa icons)
