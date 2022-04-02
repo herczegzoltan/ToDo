@@ -12,10 +12,18 @@ export class TodoFormComponent implements OnInit {
 
   constructor(public service:TodoService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(form:NgForm)
   {
+    if (this.service.formData.toDoItemId == 0)
+    {
+      this.insertRecord(form);
+    }
+  }
+
+  insertRecord(form:NgForm)
+  {
+    this.service.postToDoItem().subscribe();
   }
 }
