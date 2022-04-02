@@ -13,6 +13,11 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
 
 var app = builder.Build();
 
+app.UseCors(options => options
+.WithOrigins(builder.Configuration.GetConnectionString("FrontEndConnection"))
+.AllowAnyMethod()
+.AllowAnyHeader());
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
