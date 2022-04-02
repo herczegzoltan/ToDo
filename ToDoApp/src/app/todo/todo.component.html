@@ -4,30 +4,21 @@
     </div>
     <div class="col-md-6">
         <div class="container">
-            <div class="card mb-3">
+            <div class="card mb-3" *ngFor="let item of service.list">
               <div class="card-body">
                 <table>
                     <tr>
-                      <td>Test Title</td>
+                      <td>{{item.title}}</td>
                     </tr>
                     <tr>
-                      <td>Test Description</td>
+                      <td>{{item.description}}</td>
+                    </tr>
+                    <tr>
+                      <td>{{item.dueDate}}</td>
                     </tr>
                   </table>
               </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                  <table>
-                      <tr>
-                        <td>Test Title</td>
-                      </tr>
-                      <tr>
-                        <td>Test Description</td>
-                      </tr>
-                    </table>
-                </div>
-              </div>
           </div>
     </div>
 </div>

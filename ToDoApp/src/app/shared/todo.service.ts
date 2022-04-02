@@ -9,9 +9,18 @@ export class TodoService {
 
   constructor(private http:HttpClient) { }
   readonly baseUrl = 'http://localhost:5037/api/ToDoItem';
-  formData:Todo = new Todo(); 
+  formData:Todo = new Todo();
+  list:Todo[];
 
-  postToDoItem(){
+  postToDoItem()
+  {
     return this.http.post(this.baseUrl, this.formData);
+  }
+
+  loadList()
+  {
+    this.http.get(this.baseUrl)
+    .toPromise()
+    .then(res => this.list = res as Todo[]);
   }
 }
