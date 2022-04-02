@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/shared/todo.service';
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-todo-form',
@@ -14,4 +15,7 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(form:NgForm)
+  {
+  }
 }
