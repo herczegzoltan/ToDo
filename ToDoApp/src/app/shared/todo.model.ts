@@ -3,5 +3,5 @@ export class Todo {
     title:string='';
     description:string='';
     dueDate:Date= new Date();
-    isComplete:boolean=false;
+    isCompleted:boolean=false;
 }
