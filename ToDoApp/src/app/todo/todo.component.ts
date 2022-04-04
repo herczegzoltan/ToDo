@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../shared/todo.service';
+import { Todo } from '../shared/todo.model';
+import { DatePipe } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-todo',
@@ -13,5 +16,15 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.loadList();
+  }
+
+  populateForm(selectedRecord:Todo)
+  {
+    this.service.formData = Object.assign({}, selectedRecord);
+  }
+
+  onUpdate(form:NgForm)
+  {
+    this.service.putTodoItem().subscribe();
   }
 }

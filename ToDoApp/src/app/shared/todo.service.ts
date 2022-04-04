@@ -23,4 +23,8 @@ export class TodoService {
     .toPromise()
     .then(res => this.list = res as Todo[]);
   }
+
+  putTodoItem(){
+    return this.http.put(`${this.baseUrl}/${this.formData.toDoItemId}`, this.formData);
+  }
 }
