@@ -14,8 +14,8 @@ namespace ToDoApi.Models
         [Column(TypeName = "nvarchar(100)")]
         public string Description { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime DueDate { get; set; }
+        [Column(TypeName = "nvarchar(10)")]
+        public string DueDate { get; set; }
 
         public bool IsCompleted { get; set; }
     }
