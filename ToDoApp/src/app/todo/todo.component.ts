@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../shared/todo.service';
 import { Todo } from '../shared/todo.model';
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -20,6 +20,11 @@ export class TodoComponent implements OnInit {
 
   populateForm(selectedRecord:Todo)
   {
+    var date = new Date(selectedRecord.dueDate);
+    const format = 'yyyy-MM-dd';
+    const culture = 'en-US';
+
+    selectedRecord.dueDate = formatDate(date, format, culture);
     this.service.formData = Object.assign({}, selectedRecord);
   }
 
