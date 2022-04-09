@@ -15,18 +15,9 @@
       <tbody>
         <tr *ngFor="let item of service.list">
           <td>
-            <div class="funkyradio-default">
               <input type="checkbox" name="checkbox" [checked]="item.isCompleted"/>
-              <label onclick="" >{{item.title}}-{{item.isCompleted}}</label>
-            </div>
+              <button class="btn btn-lg btn-block btn btn-secondary" (click)="populateForm(item)">{{item.title}}</button>
           </td>
-          <!-- <td><button class="btn btn-lg btn-block btn btn-secondary">{{item.title}}-{{item.isCompleted}}</button></td> -->
-
-          <!-- <div class="[ btn-group ]">
-                <button type="button" class="btn btn-lg btn-block btn btn-secondary">{{item.title}}-{{item.isCompleted}}</button>
-            </div>
-              <input class="checkbox" type="checkbox" [checked]="item.isCompleted">
-              <button type="button" class="btn btn-lg btn-block btn btn-secondary">{{item.title}}-{{item.isCompleted}}</button> -->
         </tr>
       </tbody>
     </table>

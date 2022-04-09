@@ -20,11 +20,14 @@ export class TodoComponent implements OnInit {
 
   populateForm(selectedRecord:Todo)
   {
-    var date = new Date(selectedRecord.dueDate);
-    const format = 'yyyy-MM-dd';
-    const culture = 'en-US';
-    
-    selectedRecord.dueDate = formatDate(date, format, culture);
+    if (selectedRecord.dueDate != '')
+    {
+      var date = new Date(selectedRecord.dueDate);
+      const format = 'yyyy-MM-dd';
+      const culture = 'en-US';
+      selectedRecord.dueDate = formatDate(date, format, culture);
+    }
+
     this.service.formData = Object.assign({}, selectedRecord);
   }
 
@@ -48,14 +51,14 @@ export class TodoComponent implements OnInit {
   {
     this.service.postToDoItem().subscribe(
       res => {
-        this.resetform(form);
+        this.resetForm(form);
         this.service.loadList();
       },
       err => {console.log(err)},
     );
   }
 
-  resetform(form:NgForm)
+  resetForm(form:NgForm)
   {
     form.form.reset();
     this.service.formData = new Todo();
