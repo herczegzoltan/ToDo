@@ -6,7 +6,6 @@ import { HttpClient } from "@angular/common/http"
   providedIn: 'root'
 })
 export class TodoService {
-
   constructor(private http:HttpClient) { }
   readonly baseUrl = 'http://localhost:5037/api/ToDoItem';
   formData:Todo = new Todo();
