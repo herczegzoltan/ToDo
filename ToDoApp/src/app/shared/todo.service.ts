@@ -6,33 +6,30 @@ import { HttpClient } from "@angular/common/http"
   providedIn: 'root'
 })
 export class TodoService {
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   readonly baseUrl = 'http://localhost:5037/api/ToDoItem';
-  formInputData:Todo = new Todo();
-  formData:Todo = new Todo();
-  list:Todo[];
+  formInputData: Todo = new Todo();
+  formData: Todo = new Todo();
+  list: Todo[];
 
-  postToDoItem()
-  {
+  postToDoItem() {
     return this.http.post(this.baseUrl, this.formInputData);
   }
 
-  putTodoItem()
-  {
+  putTodoItem() {
     return this.http.put(`${this.baseUrl}/${this.formData.toDoItemId}`, this.formData);
   }
 
-  deleteToDoItem(selectedToDoItemId:number)
-  {
+  deleteToDoItem(selectedToDoItemId: number) {
     return this.http.delete(`${this.baseUrl}/${selectedToDoItemId}`);
   }
-  
-  loadList()
-  {
+
+  loadList() {
     this.http.get(this.baseUrl)
-    .toPromise()
-    .then(res =>
-      this.list = res as Todo[]
-      );
+      .toPromise()
+      .then(res =>
+        this.list = res as Todo[]
+      )
+      .then(item => item.sort((a: Todo, b: Todo) => (a.isCompleted < b.isCompleted) ? -1 : 1))
   }
 }
