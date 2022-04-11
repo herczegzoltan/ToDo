@@ -3,11 +3,11 @@
     <form novalidate autocomplete="off" #form="ngForm">
       <input type="hidden" name="toDoItemId" [value]="service.formInputData.toDoItemId" />
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Add a task" name="title" #title="ngModel"
-        [(ngModel)]="service.formInputData.title">
+        <input  required [class.invalid]="title.invalid && title.touched" type="text" class="form-control" placeholder="Add a task" name="title" #title="ngModel"
+          [(ngModel)]="service.formInputData.title">
         <span style="width: 10px"></span>
         <span class="input-group-btn">
-          <button class="btn btn-info" (click)="insertForm(form)">Add</button>
+          <button [disabled]="form.invalid" class="btn btn-info" (click)="insertForm(form)"><i class="fa-solid fa-plus"></i></button>
         </span>
       </div>
     </form>
@@ -15,9 +15,12 @@
     <table class="table table-hover">
       <tbody>
         <tr *ngFor="let item of service.list">
-            <td class="fitwidth" ><input type="checkbox" name="checkbox" [checked]="item.isCompleted" (change)="onIsComplatedCheckboxChange(item, $event)"/></td>
-            <td style="text-align:left" (click)="populateForm(item)">{{item.title}}</td>
-          </tr>
+          <td class="fitwidth">
+            <input type="checkbox" name="checkbox" [checked]="item.isCompleted"
+              (change)="onIsComplatedCheckboxChange(item, $event)" />
+          </td>
+          <td style="text-align:left" (click)="populateForm(item)">{{item.title}}</td>
+        </tr>
       </tbody>
     </table>
   </div>

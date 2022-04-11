@@ -1,25 +1,31 @@
 <form autocomplete="off" #form="ngForm">
-  <input type="hidden" name="toDoItemId" [value]="service.formData.toDoItemId" />
-  <div class="form-group">
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <div class="input-group-text"><input type="checkbox" name="checkbox" [checked]="service.formData.isCompleted"/>
+  <input type="hidden" name="toDoItemId" [value]="service.formData.toDoItemId"/>
+  <fieldset [disabled]="service.formData.toDoItemId == 0">
+    <div class="form-group">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><input type="checkbox" name="checkbox" [checked]="service.formData.isCompleted" />
+          </div>
         </div>
+        <input input type="text" class="form-control" placeholder="Title" name="title" #title="ngModel"
+          [(ngModel)]="service.formData.title" [readonly]="form.invalid">
+        <span style="width: 10px"></span>
+        <button type="submit" class="btn btn-info" (click)="updateForm(form)">
+          <i class="fa-solid fa-file-pen"></i>
+        </button>
+        <span style="width: 10px"></span>
+        <button type="submit" class="btn btn-danger" (click)="deleteForm(service.formData.toDoItemId)">
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
-      <input input type="text" class="form-control" placeholder="Title" name="title" #title="ngModel"
-        [(ngModel)]="service.formData.title">
-      <span style="width: 10px"></span>
-      <button type="submit" class="btn btn-info" (click)="updateForm(form)">Update</button>
-      <span style="width: 10px"></span>
-      <button type="submit" class="btn btn-danger" (click)="deleteForm(service.formData.toDoItemId)">Delete</button>
     </div>
-  </div>
-  <div class="form-group">
-    <textarea type="area" class="form-control" placeholder="Description" name="description" #description="ngModel"
-      [(ngModel)]="service.formData.description"></textarea>
-  </div>
-  <div class="form-group">
-    <input type="date" class="form-control" placeholder="dueDate" name="dueDate" #dueDate="ngModel"
-      [(ngModel)]="service.formData.dueDate">
-  </div>
+    <div class="form-group">
+      <textarea type="area" class="form-control" placeholder="Description" name="description" #description="ngModel"
+        [(ngModel)]="service.formData.description"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control" placeholder="dueDate" name="dueDate" #dueDate="ngModel"
+        [(ngModel)]="service.formData.dueDate">
+    </div>
+  </fieldset>
 </form>
