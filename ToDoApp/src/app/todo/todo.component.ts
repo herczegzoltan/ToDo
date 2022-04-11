@@ -45,6 +45,19 @@ export class TodoComponent implements OnInit {
     }
   }
 
+  onIsComplatedCheckboxChange(selectedRecord:Todo, values:any)
+  {
+    selectedRecord.isCompleted = values.currentTarget.checked;
+    
+    this.service.formData = Object.assign({}, selectedRecord);
+    this.service.putTodoItem().subscribe(
+      res => {
+        this.service.loadList();
+      },
+      err => {console.log(err)},
+    );
+  }
+
   resetForm(form:NgForm)
   {
     form.form.reset();
