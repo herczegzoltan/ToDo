@@ -17,8 +17,14 @@ export class TodoService {
     return this.http.post(this.baseUrl, this.formInputData);
   }
 
-  putTodoItem(){
+  putTodoItem()
+  {
     return this.http.put(`${this.baseUrl}/${this.formData.toDoItemId}`, this.formData);
+  }
+
+  deleteToDoItem(selectedToDoItemId:number)
+  {
+    return this.http.delete(`${this.baseUrl}/${selectedToDoItemId}`);
   }
   
   loadList()

@@ -30,4 +30,18 @@ export class TodoFormComponent implements OnInit {
       err => {console.log(err)},
     )
   }
+
+  deleteForm(selectedToDoItemId:number)
+  {
+    if (confirm('Are you sure to delete this record?'))
+    {
+      this.service.deleteToDoItem(selectedToDoItemId).subscribe(
+        res => {
+          this.service.loadList();
+          this.service.formData = Object.assign({}, new Todo);
+        },
+        err => {console.log(err);}
+      );
+    }
+  }
 }
