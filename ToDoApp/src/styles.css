@@ -1,0 +1,13 @@
+body {
+    margin-top: 25px;
+}
+
+tr:hover {
+    outline: none;
+    cursor: pointer;
+}
+
+td.fitwidth {
+    width: 1px;
+    white-space: nowrap;
+}
