@@ -15,12 +15,6 @@ export class TodoFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // insertRecord(form:NgForm)
-  // {
-  //   this.service.postToDoItem().subscribe();
-  //   this.resetForm(form);
-  // }
-
   resetForm(form:NgForm)
   {
     form.form.reset();
@@ -29,6 +23,11 @@ export class TodoFormComponent implements OnInit {
 
   updateForm(form:NgForm)
   {
-    this.service.putTodoItem().subscribe();
+    this.service.putTodoItem().subscribe(
+      res => {
+        this.service.loadList();
+      },
+      err => {console.log(err)},
+    )
   }
 }
