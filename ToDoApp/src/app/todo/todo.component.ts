@@ -36,26 +36,29 @@ export class TodoComponent implements OnInit {
     this.service.putTodoItem().subscribe();
   }
 
-  onSubmit(form:NgForm)
-  {
-    if (this.service.formData.toDoItemId == 0)
-    {
-      this.insertRecord(form);
-    }
-    else
-    {
-    }
-  }
-  
   insertRecord(form:NgForm)
   {
-    this.service.postToDoItem().subscribe(
+    if (this.service.formInputData.toDoItemId == 0)
+    {
+      this.service.postToDoItem().subscribe(
+        res => {
+          this.resetForm(form);
+          this.service.loadList();
+        },
+        err => {console.log(err)},
+      );
+    }
+  }
+
+  updateRecord(form:NgForm)
+  {
+    this.service.putTodoItem().subscribe(
       res => {
         this.resetForm(form);
         this.service.loadList();
       },
       err => {console.log(err)},
-    );
+    )
   }
 
   resetForm(form:NgForm)

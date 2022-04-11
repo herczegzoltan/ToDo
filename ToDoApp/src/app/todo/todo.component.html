@@ -1,14 +1,13 @@
 <div class="row">
   <div class="col-md-6">
-    <form novalidate autocomplete="off" #form="ngForm" (click)="onSubmit(form)">
-      <input type="hidden" name="toDoItemId" [value]="service.formData.toDoItemId" />
+    <form novalidate autocomplete="off" #form="ngForm">
+      <input type="hidden" name="toDoItemId" [value]="service.formInputData.toDoItemId" />
       <div class="form-group">
-        <input type="text" class="form-control form-control-lg" placeholder="Add a Todo" name="title" #title="ngModel"
-          [(ngModel)]="service.formData.title">
+        <input type="text" class="form-control form-control-lg" placeholder="Add a task" name="title" #title="ngModel"
+          [(ngModel)]="service.formInputData.title">
       </div>
-
       <div class="form-group">
-        <button class="btn btn-info btn-lg btn-block" type="submit">Add</button>
+        <button class="btn btn-info btn-lg btn-block"(click)="insertRecord(form)">Add</button>
       </div>
     </form>
     <table class="table">
