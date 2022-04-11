@@ -15,7 +15,7 @@ export class TodoComponent implements OnInit {
   constructor(public service: TodoService) { }
 
   ngOnInit(): void {
-    this.service.loadList();
+    this.service.loadList();    
   }
 
   populateForm(selectedRecord:Todo)

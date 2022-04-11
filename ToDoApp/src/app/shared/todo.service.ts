@@ -31,6 +31,8 @@ export class TodoService {
   {
     this.http.get(this.baseUrl)
     .toPromise()
-    .then(res => this.list = res as Todo[]);
+    .then(res =>
+      this.list = res as Todo[]
+      );
   }
 }
