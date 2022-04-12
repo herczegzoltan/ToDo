@@ -19,6 +19,6 @@ namespace ToDoApi.Models
 
         public bool IsCompleted { get; set; }
 
-        public List<ToDoItemStep> Steps { get; set; }
+        public ICollection<ToDoItemStep> Steps { get; set; }
     }
 }

@@ -8,6 +8,9 @@ namespace ToDoApi.Models
         [Key]
         public int ToDoItemStepId { get; set; }
 
+        [ForeignKey("FK_ToDoItem")]
+        public int ToDoItemId { get; set; }
+
         [Column(TypeName = "nvarchar(100)")]
         public string Title { get; set; }
     }

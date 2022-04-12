@@ -7,5 +7,7 @@ namespace ToDoApi.Models
         public ToDoItemContext(DbContextOptions<ToDoItemContext> options) : base(options) { }
 
         public DbSet<ToDoItem> ToDoItem { get; set; }
+
+        public DbSet<ToDoItemStep> ToDoItemStep { get; set; }
     }
 }

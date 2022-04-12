@@ -20,15 +20,15 @@ namespace ToDoApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ToDoItem>>> GetToDoItem()
         {
-            return await _context.ToDoItem.ToListAsync();
+            return await _context.ToDoItem.Include(t => t.Steps).ToListAsync(); ;
         }
 
         // GET: api/ToDoItem/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ToDoItem>> GetToDoItem(int id)
         {
-            var toDoItem = await _context.ToDoItem.FindAsync(id);
-
+            var toDoItem = await _context.ToDoItem.Include(t => t.Steps)
+                .FirstOrDefaultAsync(i => i.ToDoItemId == id);
             if (toDoItem == null)
             {
                 return NotFound();
@@ -79,17 +79,40 @@ namespace ToDoApi.Controllers
             return CreatedAtAction("GetToDoItem", new { id = toDoItem.ToDoItemId }, toDoItem);
         }
 
+        // POST: api/ToDoItemStep
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [Route("ToDoItemStep")]
+        public async Task<ActionResult<ToDoItemStep>> PostToDoItemStep(ToDoItemStep toDoItemStep)
+        {
+            if (!ToDoItemExists(toDoItemStep.ToDoItemId))
+            {
+                return NotFound();
+            }
+
+            _context.ToDoItemStep.Add(toDoItemStep);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         // DELETE: api/ToDoItem/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDoItem(int id)
         {
-            var toDoItem = await _context.ToDoItem.FindAsync(id);
+            var toDoItem = await _context.ToDoItem
+                .Include(e => e.Steps)
+                .FirstOrDefaultAsync(t => t.ToDoItemId == id);
+
             if (toDoItem == null)
             {
                 return NotFound();
             }
 
             _context.ToDoItem.Remove(toDoItem);
+
+            _context.ToDoItemStep.RemoveRange(toDoItem.Steps);
+
             await _context.SaveChangesAsync();
 
             return NoContent();
