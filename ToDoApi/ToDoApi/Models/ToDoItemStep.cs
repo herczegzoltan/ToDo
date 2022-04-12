@@ -13,5 +13,7 @@ namespace ToDoApi.Models
 
         [Column(TypeName = "nvarchar(100)")]
         public string Title { get; set; }
+
+        public bool IsCompleted { get; set; }
     }
 }
