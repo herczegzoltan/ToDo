@@ -2,9 +2,9 @@
 
 namespace ToDoApi.Models
 {
-    public class ToDoItemContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ToDoItemContext(DbContextOptions<ToDoItemContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<ToDoItem> ToDoItem { get; set; }
 

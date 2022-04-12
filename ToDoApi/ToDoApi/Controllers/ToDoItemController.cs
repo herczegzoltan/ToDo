@@ -9,9 +9,9 @@ namespace ToDoApi.Controllers
     [ApiController]
     public class ToDoItemController : ControllerBase
     {
-        private readonly ToDoItemContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public ToDoItemController(ToDoItemContext context)
+        public ToDoItemController(ApplicationDbContext context)
         {
             _context = context;
         }

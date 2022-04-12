@@ -10,7 +10,7 @@ using ToDoApi.Models;
 
 namespace ToDoApi.Migrations
 {
-    [DbContext(typeof(ToDoItemContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220412130125_AddIsCompletedToStep")]
     partial class AddIsCompletedToStep
     {
