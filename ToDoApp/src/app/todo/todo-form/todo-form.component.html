@@ -4,7 +4,8 @@
     <div class="form-group">
       <div class="input-group mb-2">
         <div class="input-group-prepend">
-          <div class="input-group-text"><input type="checkbox" name="checkbox" [checked]="service.formData.isCompleted" />
+          <div class="input-group-text">
+            <input type="checkbox" name="checkbox" [checked]="service.formData.isCompleted"/>
           </div>
         </div>
         <input input type="text" class="form-control" placeholder="Title" name="title" #title="ngModel"
@@ -19,6 +20,19 @@
         </button>
       </div>
     </div>
+    <table class="table table-hover">
+      <tbody>
+        <tr *ngFor="let stepItem of service.formData.steps">
+          <td class="fitwidth">
+            <input type="checkbox" name="checkbox" [checked]="stepItem.isCompleted"/>
+          </td>
+          <td [style]="stepItem.isCompleted? 'text-align:left; text-decoration: line-through;': 'text-align:left; '" ><div contenteditable>{{stepItem.title}}</div></td>
+          <td class="fitwidth">
+            <i class="fas fa-trash"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <div class="form-group">
       <textarea type="area" class="form-control" placeholder="Description" name="description" #description="ngModel"
         [(ngModel)]="service.formData.description"></textarea>
