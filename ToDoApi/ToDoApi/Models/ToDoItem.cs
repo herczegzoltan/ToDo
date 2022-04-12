@@ -18,5 +18,7 @@ namespace ToDoApi.Models
         public string DueDate { get; set; }
 
         public bool IsCompleted { get; set; }
+
+        public List<ToDoItemStep> Steps { get; set; }
     }
 }

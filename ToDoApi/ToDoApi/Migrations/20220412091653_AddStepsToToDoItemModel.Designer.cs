@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoApi.Models;
 
@@ -11,9 +12,10 @@ using ToDoApi.Models;
 namespace ToDoApi.Migrations
 {
     [DbContext(typeof(ToDoItemContext))]
-    partial class ToDoItemContextModelSnapshot : ModelSnapshot
+    [Migration("20220412091653_AddStepsToToDoItemModel")]
+    partial class AddStepsToToDoItemModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
