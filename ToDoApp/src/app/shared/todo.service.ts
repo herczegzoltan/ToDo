@@ -12,6 +12,7 @@ export class TodoService {
   formInputData: Todo = new Todo();
   formData: Todo = new Todo();
   formStepData: Step = new Step();
+  formUpdateStepData: Step = new Step();
   list: Todo[];
   listStep: Step[];
 
@@ -26,6 +27,11 @@ export class TodoService {
 
   putTodoItem() {
     return this.http.put(`${this.baseUrl}/${this.formData.toDoItemId}`, this.formData);
+  }
+
+  putTodoStepItem()
+  {
+    return this.http.put(`${this.baseUrl}/ToDoItemStep/${this.formUpdateStepData.toDoItemStepId}`, this.formUpdateStepData);
   }
 
   deleteToDoItem(selectedToDoItemId: number) {

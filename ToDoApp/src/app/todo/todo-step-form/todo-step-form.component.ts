@@ -13,8 +13,7 @@ export class TodoStepFormComponent implements OnInit {
 
   constructor(public service: TodoService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   insertForm(form:NgForm)
   {
@@ -28,12 +27,37 @@ export class TodoStepFormComponent implements OnInit {
     );
   }
 
+  updateForm(step:Step)
+  {
+    console.log(step)
+    this.service.formUpdateStepData = Object.assign({}, step);
+    this.service.putTodoStepItem().subscribe(
+      res => {
+        this.service.loadStepList();
+      },
+      err => {console.log(err)},
+    );
+  }
+
   deleteToDoStepItem(selectedToDoStepItemId:number)
   {
     this.service.deleteToDoStepItem(selectedToDoStepItemId).subscribe(
       res => {
         this.service.loadStepList();
         this.service.formStepData = Object.assign({}, new Step);
+      },
+      err => {console.log(err)},
+    );
+  }
+
+  onIsComplatedCheckboxChange(selectedRecord:Step, values:any)
+  {
+    selectedRecord.isCompleted = values.currentTarget.checked;
+    
+    this.service.formUpdateStepData = Object.assign({}, selectedRecord);
+    this.service.putTodoStepItem().subscribe(
+      res => {
+        this.service.loadStepList();
       },
       err => {console.log(err)},
     );

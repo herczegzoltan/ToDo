@@ -17,7 +17,7 @@
         <tr *ngFor="let item of service.list">
           <td class="fitwidth">
             <input type="checkbox" name="checkbox" [checked]="item.isCompleted"
-              (change)="onIsComplatedCheckboxChange(item, $event)" />
+              (change)="onIsComplatedCheckboxChange(item, $event)"/>
           </td>
           <td [style]="item.isCompleted? 'text-align:left; text-decoration: line-through;': 'text-align:left; '" (click)="populateForm(item)">{{item.title}}</td>
         </tr>
