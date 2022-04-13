@@ -31,6 +31,10 @@ export class TodoService {
   deleteToDoItem(selectedToDoItemId: number) {
     return this.http.delete(`${this.baseUrl}/${selectedToDoItemId}`);
   }
+  
+  deleteToDoStepItem(selectedToDoStepItemId: number) {
+    return this.http.delete(`${this.baseUrl}/ToDoItemStep/${selectedToDoStepItemId}`);
+  }
 
   loadList() {
     this.http.get(this.baseUrl)

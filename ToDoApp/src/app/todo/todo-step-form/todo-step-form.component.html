@@ -32,7 +32,7 @@
               <input type="text" class="form-control" placeholder="Next Step" name="title" #title="ngModel"
               [(ngModel)]="service.formStepData.title" />
               <span style="width: 10px"></span>
-              <button type="submit" class="btn btn-info" (click)="insertForm(form)">
+              <button class="btn btn-info" (click)="insertForm(form)">
                 <i class="fas fa-add"></i>
               </button>
             </div>
@@ -46,7 +46,7 @@
                 </td>
                 <td [style]="stepItem.isCompleted? 'text-align:left; text-decoration: line-through;': 'text-align:left;'" ><div contenteditable>{{stepItem.title}}</div></td>
                 <td class="fitwidth">
-                  <i class="fas fa-trash" onclick="alert('selected')"></i>
+                  <i class="fas fa-trash" (click)="deleteToDoStepItem(stepItem.toDoItemStepId)"></i>
                 </td>
               </tr>
             </tbody>

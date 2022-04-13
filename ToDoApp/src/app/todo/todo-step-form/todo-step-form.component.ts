@@ -28,23 +28,20 @@ export class TodoStepFormComponent implements OnInit {
     );
   }
 
+  deleteToDoStepItem(selectedToDoStepItemId:number)
+  {
+    this.service.deleteToDoStepItem(selectedToDoStepItemId).subscribe(
+      res => {
+        this.service.loadStepList();
+        this.service.formStepData = Object.assign({}, new Step);
+      },
+      err => {console.log(err)},
+    );
+  }
+
   resetForm(form:NgForm)
   {
     form.form.reset();
     this.service.formStepData = new Step();
   }
-  
-  // insertForm(form:NgForm)
-  // {
-  //   this.service.formStepData = new Step();
-  //   this.service.formStepData.title = title;
-  //   this.service.formStepData.toDoItemId = selectedToDoItemId;
-
-  //   this.service.postToDoStepItem().subscribe(
-  //     res => {
-  //       this.service.loadList();
-  //     },
-  //     err => {console.log(err)},
-  //   )
-  // }
 }
