@@ -118,6 +118,26 @@ namespace ToDoApi.Controllers
             return NoContent();
         }
 
+
+        // DELETE: api/ToDoItemStep/5
+        [HttpDelete("ToDoItemStep/{id}")]
+        public async Task<IActionResult> DeleteToDoItemStep(int id)
+        {
+            var toDoItemStep = await _context.ToDoItemStep
+                .FirstOrDefaultAsync(t => t.ToDoItemStepId == id);
+
+            if (toDoItemStep == null)
+            {
+                return NotFound();
+            }
+
+            _context.ToDoItemStep.Remove(toDoItemStep);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         private bool ToDoItemExists(int id)
         {
             return _context.ToDoItem.Any(e => e.ToDoItemId == id);
