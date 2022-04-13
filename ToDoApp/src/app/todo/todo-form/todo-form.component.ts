@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/shared/todo.service';
 import { NgForm } from '@angular/forms'
 import { Todo } from 'src/app/shared/todo.model';
+import { Step } from 'src/app/shared/step.model';
 
 @Component({
   selector: 'app-todo-form',

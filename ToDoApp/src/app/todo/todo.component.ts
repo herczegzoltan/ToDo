@@ -29,6 +29,7 @@ export class TodoComponent implements OnInit {
     }
 
     this.service.formData = Object.assign({}, selectedRecord);
+    this.service.listStep = selectedRecord.steps;
   }
 
   insertForm(form:NgForm)

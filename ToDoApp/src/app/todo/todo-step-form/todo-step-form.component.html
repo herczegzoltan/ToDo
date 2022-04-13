@@ -1,0 +1,55 @@
+<!-- <div class="form-group">
+    <div class="input-group mb-2">
+      <input type="text" class="form-control" placeholder="Next Step" name="stepTitle" id="stepTitle" #stepTitle/>
+      <span style="width: 10px"></span>
+      <button type="submit" class="btn btn-info" >
+        <i class="fas fa-add"></i>
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <tbody>
+      <tr *ngFor="let stepItem of service.formData.steps">
+        <td class="fitwidth">
+          <input type="checkbox" name="checkbox" [checked]="stepItem.isCompleted"/>
+        </td>
+        <td [style]="stepItem.isCompleted? 'text-align:left; text-decoration: line-through;': 'text-align:left;'" ><div contenteditable>{{stepItem.title}}</div></td>
+        <td class="fitwidth">
+          <i class="fas fa-trash" onclick="alert('selected')"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <!-- <input required [class.invalid]="title.invalid && title.touched" type="text" class="form-control" placeholder="Add a task" name="title" #title="ngModel"
+          [(ngModel)]="service.formInputData.title" -->
+
+<form autocomplete="off" #form="ngForm">
+    <input type="hidden" name="toDoItemId" [value]="service.formData.toDoItemId"/>
+    <fieldset [disabled]="service.formData.toDoItemId == 0">
+        <div class="form-group">
+            <div class="input-group mb-2">
+              <input type="text" class="form-control" placeholder="Next Step" name="title" #title="ngModel"
+              [(ngModel)]="service.formStepData.title" />
+              <span style="width: 10px"></span>
+              <button type="submit" class="btn btn-info" (click)="insertForm(form)">
+                <i class="fas fa-add"></i>
+              </button>
+            </div>
+          </div>
+        
+          <table class="table table-hover">
+            <tbody>
+              <tr *ngFor="let stepItem of service.listStep">
+                <td class="fitwidth">
+                  <input type="checkbox" name="checkbox" [checked]="stepItem.isCompleted"/>
+                </td>
+                <td [style]="stepItem.isCompleted? 'text-align:left; text-decoration: line-through;': 'text-align:left;'" ><div contenteditable>{{stepItem.title}}</div></td>
+                <td class="fitwidth">
+                  <i class="fas fa-trash" onclick="alert('selected')"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </fieldset>
+  </form>

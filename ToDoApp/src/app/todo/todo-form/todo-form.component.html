@@ -20,23 +20,14 @@
         </button>
       </div>
     </div>
-    <table class="table table-hover">
-      <tbody>
-        <tr *ngFor="let stepItem of service.formData.steps">
-          <td class="fitwidth">
-            <input type="checkbox" name="checkbox" [checked]="stepItem.isCompleted"/>
-          </td>
-          <td [style]="stepItem.isCompleted? 'text-align:left; text-decoration: line-through;': 'text-align:left; '" ><div contenteditable>{{stepItem.title}}</div></td>
-          <td class="fitwidth">
-            <i class="fas fa-trash"></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    
+    <app-todo-step-form></app-todo-step-form>
+
     <div class="form-group">
       <textarea type="area" class="form-control" placeholder="Description" name="description" #description="ngModel"
         [(ngModel)]="service.formData.description"></textarea>
     </div>
+
     <div class="form-group">
       <input type="date" class="form-control" placeholder="dueDate" name="dueDate" #dueDate="ngModel"
         [(ngModel)]="service.formData.dueDate">
