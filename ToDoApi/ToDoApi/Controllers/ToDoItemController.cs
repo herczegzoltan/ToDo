@@ -68,6 +68,38 @@ namespace ToDoApi.Controllers
             return NoContent();
         }
 
+        // PUT: api/ToDoItemStep/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("ToDoItemStep/{id}")]
+        public async Task<IActionResult> PutToDoItemStep(int id, ToDoItemStep toDoItemStep)
+        {
+            if (id != toDoItemStep.ToDoItemStepId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(toDoItemStep).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ToDoItemStepExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+
         // POST: api/ToDoItem
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -141,6 +173,11 @@ namespace ToDoApi.Controllers
         private bool ToDoItemExists(int id)
         {
             return _context.ToDoItem.Any(e => e.ToDoItemId == id);
+        }
+
+        private bool ToDoItemStepExists(int id)
+        {
+            return _context.ToDoItemStep.Any(e => e.ToDoItemStepId == id);
         }
     }
 }
